@@ -18,12 +18,11 @@ namespace PizzaCalculator.Droid
             var peopleEntry = FindViewById<EditText>(Resource.Id.peopleEntry);
             var calculate = FindViewById<Button>(Resource.Id.calculateButton);
             var pizzaCount = FindViewById<TextView>(Resource.Id.pizzaCountLabel);
+            var PizzaCalculatorService = new PizzaCalculatorService();
 
             calculate.Click += delegate
             {
-                var count = int.Parse(peopleEntry.Text);
-                var pizzas = count / 3;
-                pizzaCount.Text = pizzas.ToString();
+                pizzaCount.Text = PizzaCalculatorService.Calculate(peopleEntry.Text);
             };
         }
     }

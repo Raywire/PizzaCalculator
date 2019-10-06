@@ -15,13 +15,11 @@ namespace PizzaCalculator.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            var PizzaCalculatorService = new PizzaCalculatorService();
 
             // Perform any additional setup after loading the view, typically from a nib.
             CalculateButton.TouchUpInside += delegate {
-
-                var people = int.Parse(PeopleEntry.Text);
-                var pizzas = people / 3;
-                PizzaCountLabel.Text = pizzas.ToString();
+                PizzaCountLabel.Text = PizzaCalculatorService.Calculate(PeopleEntry.Text);
                 PeopleEntry.ResignFirstResponder();
 	        };
         }
