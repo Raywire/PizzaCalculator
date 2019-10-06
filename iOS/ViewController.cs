@@ -17,12 +17,13 @@ namespace PizzaCalculator.iOS
             base.ViewDidLoad();
 
             // Perform any additional setup after loading the view, typically from a nib.
-            Button.AccessibilityIdentifier = "myButton";
-            Button.TouchUpInside += delegate
-            {
-                var title = string.Format("{0} clicks!", count++);
-                Button.SetTitle(title, UIControlState.Normal);
-            };
+            CalculateButton.TouchUpInside += delegate {
+
+                var people = int.Parse(PeopleEntry.Text);
+                var pizzas = people / 3;
+                PizzaCountLabel.Text = pizzas.ToString();
+                PeopleEntry.ResignFirstResponder();
+	        };
         }
 
         public override void DidReceiveMemoryWarning()
